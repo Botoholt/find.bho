@@ -6,10 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint-staged": "lint-staged",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prettier": "prettier --write */**/*.{js,jsx,json,ts,tsx,scss,css,md}",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.css": [
+      "prettier --write"
+    ],
+    "*.ts": [
+      "prettier --write",
+      "eslint --no-error-on-unmatched-pattern --fix"
+    ],
+    "*.tsx": [
+      "prettier --write",
+      "eslint --no-error-on-unmatched-pattern --fix"
+    ],
+    "*.js": [
+      "prettier --write",
+      "eslint --no-error-on-unmatched-pattern --fix"
+    ],
+    "*.jsx": [
+      "prettier --write",
+      "eslint --no-error-on-unmatched-pattern --fix"
+    ]
   },
   "dependencies": {
     "babel-plugin-react-compiler": "0.0.0-experimental-334f00b-20240725",
