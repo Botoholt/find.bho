@@ -1,0 +1,40 @@
+:root {
+  --color-primary: 11 115 255;
+  --color-secondary: 250 115 45;
+  --color-tertiary: 140 188 88;
+  --color-succes: 163 255 71;
+  --color-danger: 254 44 44;
+
+  --color-app-bg: 255 255 255;
+  --rv-color-app-bg: 13 19 29;
+  --color-primary-bg: 246 247 249;
+  --color-secondary-bg: 240 241 243;
+
+  --color-primary-text: 13 19 29;
+  --rv-color-primary-text: 255 255 255;
+  --color-secondary: 89 98 113;
+  --color-tertiary-text: 158 169 183;
+  --color-placeholder-text: 169 179 192;
+
+  --color-primary-border: 209 211 217;
+  --color-primary-hover-border: 155 157 163;
+}
+
+[data-theme="dark"] {
+  /* --color-primary: 24 129 243; */
+  --color-secondary: 245 129 65;
+
+  --color-app-bg: 20 20 20;
+  --rv-color-app-bg: 255 255 255;
+  --color-primary-bg: 29 30 32;
+  --color-secondary-bg: 36 37 40;
+
+  --color-primary-text: 229 228 237;
+  --rv-color-primary-text: 13 19 29;
+  --color-secondary: 195 195 195;
+  --color-tertiary-text: 109 110 118;
+  --color-placeholder-text: 77 82 90;
+
+  --color-border: 42 42 44;
+  --color-border-focus: 95 95 99;
+}
