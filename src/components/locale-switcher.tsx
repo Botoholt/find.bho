@@ -24,11 +24,11 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         className={cn(
-          "flex-center h-10 gap-2 rounded-xl bg-transparent p-1 px-2 text-white hover:bg-white/10",
-          open && "bg-white/15 hover:bg-white/15",
+          "flex-center h-10 gap-2 rounded-xl bg-transparent p-1 px-2 text-t-primary hover:bg-b-secondary",
+          open && "bg-b-secondary hover:bg-b-secondary",
         )}
       >
-        <GlobeIcon className="size-6 stroke-white" />
+        <GlobeIcon className="size-6 stroke-t-primary" />
         {localeObjects[locale].short}
       </button>
       <div

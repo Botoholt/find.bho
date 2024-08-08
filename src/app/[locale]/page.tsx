@@ -7,7 +7,7 @@ export default function IndexPage({ params: { locale } }: { params: { locale: st
 
   return (
     <div className="container h-[calc(100dvh-124px)]">
-      <div className="pt-[calc(50dvh-172px)]">
+      <div className="px-1 pt-[calc(50dvh-172px)] sm:px-3">
         <Slogan />
         <FindField />
       </div>

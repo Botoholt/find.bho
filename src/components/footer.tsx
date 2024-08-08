@@ -21,7 +21,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="min-h-14 bg-b-primary px-4 py-2">
+    <footer className="min-h-14 bg-b-primary py-2">
       <div className="container">
         <div className="mb-3.5 flex min-h-9 flex-col items-center justify-between gap-2 sm:flex-row sm:gap-4">
           <div className="flex h-9 flex-row flex-wrap items-center gap-1.5 sm:h-full sm:gap-3">

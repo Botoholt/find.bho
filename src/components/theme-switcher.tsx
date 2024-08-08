@@ -14,22 +14,22 @@ export function ThemeSwitcher() {
   useEffect(() => setMounted(true), [])
 
   if (!mounted) {
-    return <Skeleton className="h-10 w-20 rounded-xl bg-white/20" />
+    return <Skeleton className="h-10 w-20 rounded-xl bg-b-secondary" />
   }
 
   return (
-    <div className="flex flex-row gap-1 rounded-xl bg-white/10 p-1">
+    <div className="flex flex-row gap-1 rounded-xl bg-b-secondary p-1">
       <button
         onClick={() => setTheme("light")}
-        className={cn("flex-center size-8 rounded-lg", theme == "light" && "bg-white/15")}
+        className={cn("flex-center size-8 rounded-lg", theme == "light" && "bg-primary")}
       >
-        <SunIcon className="size-6 stroke-white" />
+        <SunIcon className={cn("size-6 stroke-t-primary", theme == "light" && "stroke-white")} />
       </button>
       <button
         onClick={() => setTheme("dark")}
-        className={cn("flex-center size-8 rounded-lg", theme == "dark" && "bg-white/15")}
+        className={cn("flex-center size-8 rounded-lg", theme == "dark" && "bg-primary")}
       >
-        <MoonIcon className="size-5 stroke-white" />
+        <MoonIcon className="size-5 stroke-t-primary" />
       </button>
     </div>
   )
