@@ -1,5 +1,17 @@
 {
   "Header": {
     "title": "Find - Botoholt"
+  },
+  "Find": {
+    "slogan": "Find out what music is playing now on ",
+    "slogan-steam": "stream",
+    "placeholder": "Nickname or link to stream"
+  },
+  "Footer": {
+    "all-time": "All time",
+    "week": "Week",
+    "today": "Today",
+    "support": "support service",
+    "created": "Created with love by "
   }
 }

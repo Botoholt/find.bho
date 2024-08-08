@@ -6,6 +6,7 @@ import { getMessages, unstable_setRequestLocale } from "next-intl/server"
 import { Inter } from "next/font/google"
 import { ReactNode } from "react"
 import { Providers } from "../providers"
+import { Footer } from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
@@ -37,10 +38,11 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
 
   return (
     <html lang={locale} className={inter.className} suppressHydrationWarning>
-      <body className="h-dvh w-dvw bg-b-app">
+      <body className="h-dvh bg-b-app">
         <Providers locale={locale} messages={messages}>
           <Header />
-          <main className="container mx-auto px-4">{children}</main>
+          <main>{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

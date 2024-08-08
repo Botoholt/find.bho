@@ -7,12 +7,11 @@ import { cn } from "@/shared/lib/utils"
 
 export function Header() {
   const locale = useLocale() as Locale
-
   const titleCn = "text-xl font-medium tracking-[0.04rem] text-white"
 
   return (
-    <header className="bg-primary">
-      <section className="container mx-auto flex items-center justify-between px-4 py-2">
+    <header className="container p-2">
+      <div className="flex items-center justify-between rounded-2xl bg-primary px-4 py-2">
         <div className="flex flex-row items-center gap-2">
           <Image src="/favicon/rv-icon.svg" width={32} height={32} alt="Logo" />
           <h1>
@@ -24,7 +23,7 @@ export function Header() {
           <ThemeSwitcher />
           <LocaleSwitcher locale={locale} />
         </div>
-      </section>
+      </div>
     </header>
   )
 }

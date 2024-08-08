@@ -1,5 +1,17 @@
 {
   "Header": {
     "title": "Find - Botoholt"
+  },
+  "Find": {
+    "slogan": "Узнай какая музыка сейчас играет на",
+    "slogan-steam": "стриме",
+    "placeholder": "Никнейм или ссылка на стрим"
+  },
+  "Footer": {
+    "all-time": "Всего",
+    "week": "За неделя",
+    "today": "Сегодня",
+    "support": "поддержать сервис",
+    "created": "Создано с любовью "
   }
 }

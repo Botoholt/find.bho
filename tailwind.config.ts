@@ -9,6 +9,10 @@ export default {
         primary: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        twitch: "rgb(var(--twitch-color) / <alpha-value>)",
+        kick: "rgb(var(--kick-color) / <alpha-value>)",
+        youtube: "rgb(var(--youtube-color) / <alpha-value>)",
+
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
         tertiary: "rgb(var(--color-tertiary) / <alpha-value>)",
