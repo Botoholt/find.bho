@@ -13,5 +13,30 @@
     "today": "Today",
     "support": "support service",
     "created": "Created with love by "
+  },
+  "Platforms": {
+    "platform": "Platform",
+    "twitch": "Twitch",
+    "youtube": "YouTube",
+    "kick": "Kick"
+  },
+  "Statuses": {
+    "status": "Status",
+    "success": "Success",
+    "error": "error"
+  },
+  "FindResult": {
+    "now-listening": "is listening now",
+    "channel": "Channel",
+    "start": "Start",
+    "end": "End",
+    "genre": "Genre",
+    "summary-info": "Summary information",
+    "error-type": {
+      "streamer-not-found": "Streamer not found",
+      "streamer-offline": "Streamer offline",
+      "unknown": "Unknown error",
+      "song-not-recognized": "Song not recognized"
+    }
   }
 }

@@ -14,7 +14,7 @@ export function Providers({
   messages: AbstractIntlMessages
 }) {
   return (
-    <NextIntlClientProvider messages={messages} locale={locale}>
+    <NextIntlClientProvider timeZone="Europe/Moscow" messages={messages} locale={locale}>
       <ThemeProvider disableTransitionOnChange defaultTheme="system" attribute="data-theme">
         {children}
       </ThemeProvider>

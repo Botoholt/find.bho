@@ -1,44 +1,23 @@
 "use client"
 import ShazamIcon from "@/shared/assets/icons/shazam.svg"
-import KickIcon from "@/shared/assets/icons/kick.svg"
-import TwitchIcon from "@/shared/assets/icons/twitch.svg"
-import YouTubeIcon from "@/shared/assets/icons/youtube.svg"
-import { ReactNode, useCallback, useState } from "react"
-import { cn } from "@/shared/lib/utils"
+import { useCallback, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { z } from "zod"
 import { usePathname, useRouter } from "@/shared/config/i18n.config"
-import { useDebounceCallback } from "@/shared/lib/hooks/use-debounce-callback"
+import { useDebounceCallback, useFindSong } from "@/shared/lib/hooks"
 import { useTranslations } from "next-intl"
+import { platforms } from "@/shared/types"
+import { FindPlatformButton } from "./find-platform-button"
+import { Slogan } from "./slogan"
+import { cn } from "@/shared/lib/utils"
+import { FindResult } from "./find-result"
 
 export function FindField() {
   const t = useTranslations("Find")
-
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
-
-  const platforms = ["twitch", "kick", "youtube"] as const
-  type Platform = (typeof platforms)[number]
   const platform = z.enum(platforms).catch("twitch").parse(searchParams.get("p"))
-  const platformObjects: Record<Platform, { name: string; className: string; icon: ReactNode }> = {
-    twitch: {
-      name: "Twitch",
-      className: "bg-twitch focus:ring-twitch/60",
-      icon: <TwitchIcon className="size-6 fill-white" />,
-    },
-    youtube: {
-      name: "YouTube",
-      className: "bg-youtube focus:ring-youtube/60",
-      icon: <YouTubeIcon className="size-6 fill-white" />,
-    },
-    kick: {
-      name: "Kick",
-      className: "bg-kick focus:ring-kick/60",
-      icon: <KickIcon className="size-5 fill-white" />,
-    },
-  }
-  const platformObject = platformObjects[platform]
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -61,44 +40,57 @@ export function FindField() {
     router.replace(pathname + "?" + createQueryString("s", streamer))
   }, 600)
 
+  const { onFindSong, ...song } = useFindSong()
+
   return (
-    <div className="my-4 flex flex-col items-center gap-2 md:flex-row">
-      <input
-        type="text"
-        maxLength={96}
-        value={streamer}
-        onChange={({ target: { value } }) => {
-          setStreamer(value)
-          onChangeStreamerParam(value)
-        }}
-        className="h-14 w-full flex-grow rounded-t-2xl border border-br-primary bg-b-secondary px-4 text-lg text-t-secondary transition-all focus:border-primary/60 focus:bg-b-app focus:text-t-primary focus:outline-none focus:ring focus:ring-primary/60 md:w-full md:rounded-s-2xl md:rounded-tr-none lg:text-xl"
-        placeholder={t("placeholder")}
-      />
-      <div className="inline-flex h-full w-full flex-row items-center gap-2 md:w-auto">
-        <button
-          type="button"
-          onClick={() => {
-            const index = platforms.indexOf(platform)
-            const newPlatform = index === platforms.length - 1 ? platforms[0] : platforms[index + 1]
-            router.replace(pathname + "?" + createQueryString("p", newPlatform))
+    <div
+      className={cn(
+        "mb-6 px-1 transition-all sm:px-3",
+        song.song ? "px-0 sm:px-0" : "pt-[calc(50dvh-172px)]",
+      )}
+    >
+      {!song.song && <Slogan />}
+      <div className="my-4 flex flex-col items-center gap-2 md:flex-row">
+        <input
+          type="text"
+          maxLength={96}
+          value={streamer}
+          onChange={({ target: { value } }) => {
+            setStreamer(value)
+            onChangeStreamerParam(value)
           }}
           className={cn(
-            "flex-center h-14 w-full gap-2 rounded-bl-2xl bg-twitch px-4 text-lg font-medium text-white transition-all focus:border-none focus:outline-none focus:ring md:w-40 md:rounded-none lg:text-xl",
-            platformObject.className,
+            "h-14 w-full flex-grow rounded-t-2xl border border-br-primary bg-b-secondary/30 px-4 text-lg transition-all focus:border-primary/60 focus:bg-b-app focus:text-t-primary focus:outline-none focus:ring focus:ring-primary/60 md:w-full md:rounded-s-2xl md:rounded-tr-none lg:text-xl",
           )}
-        >
-          {platformObject.icon}
-          {platformObject.name}
-        </button>
-        <button
-          type="button"
-          onClick={() => {}}
-          className="flex-center h-14 w-full gap-2 rounded-br-2xl bg-primary px-4 text-lg font-medium text-white transition-all focus:border-none focus:outline-none focus:ring focus:ring-primary/60 md:w-40 md:rounded-e-2xl lg:text-xl"
-        >
-          <ShazamIcon className="size-6 fill-white text-white" />
-          Shazam
-        </button>
+          placeholder={t("placeholder")}
+        />
+        <div className="inline-flex h-full w-full flex-row items-center gap-2 md:w-auto">
+          <FindPlatformButton
+            platform={platform}
+            onClick={() => {
+              const index = platforms.indexOf(platform)
+              const newPlatform =
+                index === platforms.length - 1 ? platforms[0] : platforms[index + 1]
+              router.replace(pathname + "?" + createQueryString("p", newPlatform))
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => onFindSong({ platform, streamer })}
+            disabled={song.status === "loading"}
+            className="flex-center h-14 w-full gap-2 rounded-br-2xl bg-primary px-4 text-lg font-medium text-white transition-all focus:border-none focus:outline-none focus:ring focus:ring-primary/60 md:w-40 md:rounded-e-2xl lg:text-xl"
+          >
+            <ShazamIcon
+              className={cn(
+                "size-6 fill-white text-white",
+                song.status === "loading" && "animate-spin",
+              )}
+            />
+            Shazam
+          </button>
+        </div>
       </div>
+      {song.song && <FindResult result={song.song} />}
     </div>
   )
 }

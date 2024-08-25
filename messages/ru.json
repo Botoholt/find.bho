@@ -13,5 +13,30 @@
     "today": "Сегодня",
     "support": "поддержать сервис",
     "created": "Создано с любовью "
+  },
+  "Platforms": {
+    "platform": "Платформа",
+    "twitch": "Twitch",
+    "youtube": "YouTube",
+    "kick": "Kick"
+  },
+  "Statuses": {
+    "status": "Статус",
+    "success": "Успешно",
+    "error": "Ошибка"
+  },
+  "FindResult": {
+    "now-listening": "сейчас слушает",
+    "channel": "Канал",
+    "start": "Начало",
+    "end": "Конец",
+    "genre": "Жанр",
+    "summary-info": "Сводная информация",
+    "error-type": {
+      "streamer-not-found": "Стример не найден",
+      "streamer-offline": "Стример не в сети",
+      "unknown": "Неизвестная ошибка",
+      "song-not-recognized": "Песня не распознана"
+    }
   }
 }

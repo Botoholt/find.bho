@@ -1,7 +1,7 @@
 "use client"
 import GlobeIcon from "@/shared/assets/icons/globe.svg"
 import { Locale, localeObjects, locales, usePathname, useRouter } from "@/shared/config/i18n.config"
-import { useClickOutside } from "@/shared/lib/hooks/use-click-outside"
+import { useClickOutside } from "@/shared/lib/hooks"
 import { cn } from "@/shared/lib/utils"
 import { useState } from "react"
 

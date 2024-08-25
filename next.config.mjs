@@ -36,11 +36,9 @@ const config = {
   reactStrictMode: true,
   swcMinify: true,
 
-  // images: {
-  //   domains: [
-  //     "static-cdn.jtvnw.net",
-  //   ],
-  // },
+  images: {
+    domains: ["static-cdn.jtvnw.net", "is1-ssl.mzstatic.com"],
+  },
 }
 
 export default withNextIntl(config)
